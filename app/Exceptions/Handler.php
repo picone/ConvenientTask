@@ -2,6 +2,8 @@
 
 namespace App\Exceptions;
 
+use Route;
+use App\Facades\Json;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
@@ -44,7 +46,16 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+        if($request->ajax()||$request->wantsJson()||substr(Route::currentRouteName(),0,4)=='api:'){
+            $message='';
+            if(env('APP_DEBUG')){
+                $message=$exception->getMessage();
+                if(is_object($message))$message=$message->toArray();
+            }
+            return Json::response(11,null,$message);
+        }else{
+            return parent::render($request,$exception);
+        }
     }
 
     /**

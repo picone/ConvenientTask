@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,5 +11,15 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('index',['user'=>Auth::user()]);
 });
+
+Route::group(['prefix'=>'/common'],function(){
+    Route::get('/captcha','CommonController@captcha');
+});
+
+Route::group(['prefix'=>'/user'],function(){
+    Route::post('/login','UserController@login');
+});
+
+//Route::any('/uc/{note}','\VergilLai\UcClient\Controller@api');

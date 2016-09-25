@@ -1,24 +1,30 @@
 <template>
     <div>
-        <v-header></v-header>
+        <v-header :uid="uid" :username="username"></v-header>
         <div class="container">
             <router-view></router-view>
         </div>
+        <spinner v-ref:spinner size="lg" fixed text="亲等一下哦~"></spinner>
+        <v-alert></v-alert>
     </div>
 </template>
 
 <script>
     import vHeader from '../components/vHeader.vue'
+    import vAlert from '../components/vAlert.vue'
+    import { spinner } from  'vue-strap'
 
     export default{
-        ready(){
-        },
         data(){
             return{
+                uid:parseInt(window.user.uid||0),
+                username:window.user.username||'',
             }
         },
         components:{
-            vHeader
+            vHeader,
+            vAlert,
+            spinner
         }
     }
 </script>
