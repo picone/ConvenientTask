@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Middleware\HasLogin;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +22,8 @@ Route::group(['prefix'=>'/common'],function(){
 
 Route::group(['prefix'=>'/user'],function(){
     Route::post('/login','UserController@login');
+    Route::post('/logout','UserController@logout')->middleware(HasLogin::class);
+    Route::get('/profile','UserController@profile')->middleware(HasLogin::class);
 });
 
 //Route::any('/uc/{note}','\VergilLai\UcClient\Controller@api');

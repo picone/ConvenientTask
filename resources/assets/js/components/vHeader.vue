@@ -5,10 +5,10 @@
         <li><a href="#"><i class="glyphicon glyphicon-bullhorn"></i>&nbsp;接任务</a></li>
         <li slot="right">
             <a href="#" v-if="!uid" @click.prevent="show_login=true"><i class="glyphicon glyphicon-user"></i>&nbsp;注册/登录</a>
-            <a href="#" v-if="uid&&uid>0"><img id="head_img" :src="'http://www.714.hk/uc_server/avatar.php?size=small&uid='+user_id">&nbsp;{{ username }}</a>
+            <a href="#" v-link="{name:'center',activeClass:'active'}" v-if="uid&&uid>0"><img id="head_img" :src="'http://www.714.hk/uc_server/avatar.php?size=small&uid='+uid">&nbsp;{{ username }}</a>
         </li>
     </navbar>
-    <v-login :is="!uid" :show.sync="show_login"></v-login>
+    <v-login v-if="!uid" :show.sync="show_login"></v-login>
 </template>
 
 <script>

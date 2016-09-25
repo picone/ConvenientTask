@@ -16,6 +16,7 @@ class UserController extends Controller{
     /**
      * 登录
      * @param Request $request
+     * @return mixed
      */
     public function login(Request $request){
         $client_ip=$request->getClientIp();
@@ -42,7 +43,27 @@ class UserController extends Controller{
         }
     }
 
-    public function profile(){
+    /**
+     * 登出
+     * @return mixed
+     */
+    public function logout(){
+        Auth::logout();
+        return Json::response();
+    }
 
+    /**
+     * 获取个人资料
+     * @param Request $request
+     * @return mixed
+     */
+    public function profile(Request $request){
+        $user=$request->user();
+        $result=[
+            'uid'=>$user->id,
+            'username'=>$user->username,
+            'money'=>$user->money
+        ];
+        return Json::response(1,$result);
     }
 }

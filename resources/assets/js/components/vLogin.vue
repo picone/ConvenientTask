@@ -29,7 +29,7 @@
 
     export default{
         props:{
-            show: {
+            show:{
                 required:true,
                 type:Boolean,
                 twoWay:true

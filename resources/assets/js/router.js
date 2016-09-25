@@ -1,10 +1,20 @@
-import index from './views/index.vue'
-
 export default (router)=>{
     router.map({
         '/':{
             name:'index',
-            component:resolve=>resolve(index)
+            component:resolve=>resolve(require('./views/index.vue'))
+        },
+        '/center':{
+            name:'center',
+            component:resolve=>resolve(require('./views/center/index.vue'))
+        },
+        '/center/deposit':{
+            name:'center.deposit',
+            component:resolve=>resolve(require('./views/center/deposit.vue'))
+        },
+        '/center/withdraw':{
+            name:'center.withdraw',
+            component:resolve=>resolve(require('./views/center/withdraw.vue'))
         }
     });
 };

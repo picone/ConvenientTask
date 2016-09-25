@@ -10,10 +10,11 @@
 <body>
     <div id="app"></div>
     <script>
-        window['user']={
-            uid:{{ $user->id }},
-            username:'{{ $user->username }}'
-        };
+        @if($user)
+            window['user']={uid:{{ $user->id }},username:'{{ $user->username }}'};
+        @else
+            window['user']={uid:0,username:''};
+        @endif
     </script>
     <script src="{{ asset('js/main.js') }}"></script>
 </body>
