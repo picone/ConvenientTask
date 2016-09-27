@@ -14,16 +14,18 @@ use App\Http\Middleware\HasLogin;
 
 Route::get('/', function () {
     return view('index',['user'=>Auth::user()]);
-});
+})->name('index');
 
 Route::group(['prefix'=>'/common'],function(){
     Route::get('/captcha','CommonController@captcha');
 });
 
-Route::group(['prefix'=>'/user'],function(){
+Route::group(['prefix'=>'/user','as'=>'user:'],function(){
     Route::post('/login','UserController@login');
     Route::post('/logout','UserController@logout')->middleware(HasLogin::class);
     Route::get('/profile','UserController@profile')->middleware(HasLogin::class);
+    Route::post('/deposit','UserController@deposit')->middleware(HasLogin::class);
+    Route::any('/passpay','UserController@passpay')->name('passpay');
 });
 
 //Route::any('/uc/{note}','\VergilLai\UcClient\Controller@api');

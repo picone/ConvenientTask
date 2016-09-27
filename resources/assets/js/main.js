@@ -11,10 +11,9 @@ Vue.http.options.xhr={
     withCredentials:true
 };
 Vue.http.options.emulateHTTP=true;
-const CSRF_TOKEN=$('meta[name="_token"]').attr('content');
 Vue.http.interceptors.push((req,next)=>{
     req.credentials=true;
-    req.headers['X-CSRF-TOKEN']=CSRF_TOKEN;
+    req.headers['X-CSRF-TOKEN']=window._token;
     next();
 });
 Vue.use(VueRouter);

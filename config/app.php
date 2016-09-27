@@ -178,7 +178,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\JsonServiceProvider::class,
-        VergilLai\UcClient\ClientProvider::class
+        VergilLai\UcClient\ClientProvider::class,
+        App\Providers\PasspayServiceProvider::class
     ],
 
     /*
