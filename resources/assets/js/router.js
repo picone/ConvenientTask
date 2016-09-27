@@ -15,6 +15,23 @@ export default (router)=>{
         '/center/withdraw':{
             name:'center.withdraw',
             component:resolve=>resolve(require('./views/center/withdraw.vue'))
+        },
+        '/center/money':{
+            component:resolve=>resolve(require('./views/center/money/index.vue')),
+            subRoutes:{
+                '/record':{
+                    name:'center.money.record',
+                    component:resolve=>resolve(require('./views/center/money/record.vue'))
+                },
+                '/deposit':{
+                    name:'center.money.deposit',
+                    component:resolve=>resolve(require('./views/center/money/deposit.vue'))
+                },
+                '/withdraw':{
+                    name:'center.money.withdraw',
+                    component:resolve=>resolve(require('./views/center/money/withdraw.vue'))
+                }
+            }
         }
     });
 };

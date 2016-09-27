@@ -10,6 +10,11 @@
                 <li><a v-link="{name:'center.deposit'}" class="btn btn-primary">充值</a></li>
                 <li><a v-link="{name:'center.withdraw'}" class="btn btn-success">提现</a></li>
             </ul>
+            <ul class="list-group">
+                <li class="list-group-item col-xs-6 col-sm-4 col-md-3"><a v-link="{name:'center.money.record'}" href="#">消费记录</a></li>
+                <li class="list-group-item col-xs-6 col-sm-4 col-md-3"><a v-link="{name:'center.money.deposit'}" href="#">充值记录</a></li>
+                <li class="list-group-item col-xs-6 col-sm-4 col-md-3"><a v-link="{name:'center.money.withdraw'}" href="#">提现记录</a></li>
+            </ul>
         </panel>
         <panel header="发任务" is-open="false">
             <ul class="list-grup row">

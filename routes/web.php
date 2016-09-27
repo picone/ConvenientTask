@@ -28,4 +28,8 @@ Route::group(['prefix'=>'/user','as'=>'user:'],function(){
     Route::any('/passpay','UserController@passpay')->name('passpay');
 });
 
+Route::group(['prefix'=>'/record','as'=>'record:','middleware'=>HasLogin::class],function(){
+    Route::get('/consume','RecordController@consume');
+});
+
 //Route::any('/uc/{note}','\VergilLai\UcClient\Controller@api');
