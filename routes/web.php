@@ -31,6 +31,8 @@ Route::group(['prefix'=>'/user','as'=>'user:'],function(){
 
 Route::group(['prefix'=>'/record','as'=>'record:','middleware'=>HasLogin::class],function(){
     Route::get('/consume','RecordController@consume');
+    Route::get('/indent','RecordController@indent');
+    Route::get('/withdraw','RecordController@withdraw');
 });
 
 //Route::any('/uc/{note}','\VergilLai\UcClient\Controller@api');

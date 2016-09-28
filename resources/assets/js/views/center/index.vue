@@ -77,4 +77,8 @@
     .list-inline >li{
         margin-right:5px;
     }
+    .list-group-item>a{
+        display: block;
+        width: 100%;
+    }
 </style>

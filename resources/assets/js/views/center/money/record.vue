@@ -26,19 +26,7 @@
 
     export default{
         ready(){
-            this.$root.$refs.spinner.show();
-            this.$http.get('record/consume').then(response=>{
-                if(response.data.code==1){
-                    let data=response.data.data;
-                    this.records=data.data;
-                    this.total=data.total;
-                    this.per_page=data.per_page;
-                }else{
-                    this.$root.$broadcast('alert',response.data.msg);
-                }
-            }).then(()=>{
-                this.$root.$refs.spinner.hide();
-            });
+            this.changePage(this.current);
         },
         data(){
             return{
@@ -50,7 +38,19 @@
         },
         methods:{
             changePage(page){
-                console.log(page);
+                this.$root.$refs.spinner.show();
+                this.$http.get('record/consume?page='+page).then(response=>{
+                    if(response.data.code==1){
+                        let data=response.data.data;
+                        this.records=data.data;
+                        this.total=data.total;
+                        this.per_page=data.per_page;
+                    }else{
+                        this.$root.$broadcast('alert',response.data.msg);
+                    }
+                }).then(()=>{
+                    this.$root.$refs.spinner.hide();
+                });
             }
         },
         components:{

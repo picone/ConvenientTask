@@ -40,7 +40,7 @@
                 let min_page,max_page,arr=[];
                 if(this.page_count<=5){//总页数少于5
                     min_page=1;
-                    max_page=5;
+                    max_page=Math.min(this.page_count,5);
                 }else if(this.current<=2){//前两页时
                     min_page=1;
                     max_page=Math.min(this.page_count,5);
