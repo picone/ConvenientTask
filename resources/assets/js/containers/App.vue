@@ -18,7 +18,7 @@
         data(){
             return{
                 uid:parseInt(window.user.uid||0),
-                username:window.user.username||'',
+                username:window.user.username||''
             }
         },
         components:{

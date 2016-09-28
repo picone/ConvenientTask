@@ -11,10 +11,10 @@
         </thead>
         <tbody>
             <tr v-for="item in records">
-                <td>item.id</td>
-                <td>item.id</td>
-                <td>item.id</td>
-                <td>item.id</td>
+                <td>{{ item.id }}</td>
+                <td>{{ item.money }}</td>
+                <td>{{ item.way }}</td>
+                <td v-if="item.type==0"><a v-link="{name:''}" href="#" class="btn btn-primary">详情</a></td>
             </tr>
         </tbody>
         </table>
@@ -58,3 +58,9 @@
         }
     }
 </script>
+
+<style scoped>
+    .table thead th:last-child{
+        width:40px;
+    }
+</style>

@@ -18,6 +18,7 @@ Route::get('/', function () {
 
 Route::group(['prefix'=>'/common'],function(){
     Route::get('/captcha','CommonController@captcha');
+    Route::get('/getName/{name}','CommonController@getName');
 });
 
 Route::group(['prefix'=>'/user','as'=>'user:'],function(){

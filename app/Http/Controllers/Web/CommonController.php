@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
-use Session;
+use Session,Json;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -16,5 +16,9 @@ class CommonController extends Controller{
         $builder->output();
         Session::flash('captcha',$builder->getPhrase());
         return response('')->header('Content-type','image/jpeg');
+    }
+
+    public function getName($name){
+        return Json::response(1,trans($name));
     }
 }
